@@ -2,15 +2,14 @@ let myLeads = []
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
+// 1. Store the delete button in a deleteBtn variable
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 
-console.log(ulEl)
-
-inputBtn.addEventListener("click", function() {
-    myLeads.push(inputEl.value)
-    inputEl.value = ""
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
     renderLeads()
-})
-
+}
 
 function renderLeads() {
   let listItems = ""
@@ -25,4 +24,19 @@ function renderLeads() {
   }
   ulEl.innerHTML = listItems  
 }
+
+deleteBtn.addEventListener("dblclick", function() {
+    console.log("double clicked!")
+    localStorage.clear()
+    myLeads = []
+    renderLeads()
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    renderLeads()
+})
+
 
