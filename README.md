@@ -7,6 +7,9 @@
 ## Funcionalidades Principais
 
  **Salvar URL e informações** 
+## Capturas de Tela
+
+![Captura de Tela 1](/screenshot.png)
 
 ## Instalação
 
